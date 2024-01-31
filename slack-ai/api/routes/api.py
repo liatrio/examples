@@ -5,6 +5,12 @@ from pydantic import BaseModel
 
 from utils.app import chunker, ec_app, loader
 
+from embedchain.chunkers.slack import SlackChunker
+from embedchain.config.add_config import ChunkerConfig
+
+slack_chunker_config = ChunkerConfig(chunk_size=1000, chunk_overlap=0, length_function=len)
+slack_chunker = SlackChunker(config=slack_chunker_config)
+
 router = APIRouter()
 
 

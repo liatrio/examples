@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from embedchain import App
 from embedchain.models.data_type import DataType
+from embedchain.chunkers.base_chunker import BaseChunker
 
 from .slack_chunker import SlackChunker
 from .slack_loader import SlackLoader
@@ -39,20 +40,28 @@ app_config = {
     "app": {
         "config": {
             "id": "slack-ai-app",
+            "log_level": "DEBUG"
         }
     },
     "llm": {
         "provider": "openai",
         "config": {
-            "model": "gpt-4-turbo-preview",
+            "model": "gpt-3.5-turbo",
         },
     },
-    "embedder": {
-        "provider": "openai",
-        "config": {
-            "model": "text-embedding-3-small"
-        }
-    }
+    # "vectordb": {
+    #     "provider": "chroma",
+    #     "config": {
+    #         "dir": "db",
+    #         "allow_reset": "true"
+    #     }
+    # },
+    # "embedder": {
+    #     "provider": "openai",
+    #     "config": {
+    #         "model": "text-embedding-3-small"
+    #     }
+    # }
 }
 
 
